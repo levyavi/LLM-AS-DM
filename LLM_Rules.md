@@ -10,11 +10,10 @@
 
 These rules are mandatory on every turn.
 
-1. Never mention internal files during normal play (`hero.json`, `world_state.json`, `combat.json`, `scene.json`, `long_memory.md`) unless the player explicitly asks for out-of-game file details.
+1. Never mention internal files during normal play (`hero.json`, `world_state.json`, `combat.json`, `scene.json`, `long_memory.md`) unless the player explicitly asks about them.
 2. Whenever asking the player to choose what to do next, provide enumerated options and include an explicit `Other` option.
 3. Option count can vary by context (fewer or more than three options are allowed), but options must remain enumerated and must include `Other`.
-4. It is allowed to discuss internal files only when the player explicitly asks about them.
-5. If a hard rule is violated, immediately correct in the next line and continue play in-world.
+4. If a hard rule is violated, immediately correct in the next line and continue play in-world.
 
 ### Pre-Response Checklist
 
@@ -87,12 +86,7 @@ The LLM (DM) rolls all mechanical dice.
 
 ## 5. Standard Difficulty Ladder (DM Reference)
 
-1. 5 Easy
-2. 8 Standard
-3. 12 Hard
-4. 16 Very Hard
-5. 20 Extreme
-
+Use the standard difficulty ladder defined in `Game_Rules.md` (Section 2.3).
 DC values are hidden from the player.
 
 ---
@@ -137,16 +131,15 @@ DC values are hidden from the player.
 
 At session end:
 
-1. Output only updated contents of:
+1. Output full current contents of all files:
    1. `hero.json`
    2. `world_state.json`
    3. `combat.json`
    4. `scene.json`
    5. `long_memory.md`
 2. Do not include commentary in save output.
-3. Compress all updated files into one `.zip`.
-4. Zip name must include adventure name and current date-time.
-5. Zip name format must be `AdventureName_YYYY-MM-DD_HH-MM.zip`.
+3. Compress all five files into one `.zip`.
+4. Zip name format must be `AdventureName_YYYY-MM-DD_HH-MM.zip`.
 ---
 
 ## 8. Time Tracking
@@ -196,13 +189,17 @@ Required fields:
 1. `adventure_name` (string)
 2. `time` object with `adventure_hour` (number)
 
+Optional fields:
+1. `clocks` (array) for long-term/global deadline clocks
+
 Example:
 ```json
 {
   "adventure_name": "Ashwood",
   "time": {
     "adventure_hour": 9
-  }
+  },
+  "clocks": []
 }
 ```
 
@@ -236,11 +233,15 @@ Required fields:
 2. `scene_type` (`combat` or `social`)
 3. `bonuses` (array of structured bonus entries)
 
+Optional fields:
+1. `clocks` (array) for scene-bound deadline clocks
+
 Example:
 ```json
 {
   "scene_id": "ashwood_gate_01",
   "scene_type": "social",
+  "clocks": [],
   "bonuses": [
     {
       "id": "proof_captain_1",

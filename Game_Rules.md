@@ -19,12 +19,22 @@ This document defines the core game rules for running adventures in this system.
 1.  Choose the relevant attribute.
 2.  Roll AttributeScore d6.
 3.  Sum results.
-4.  If sum ≥ DC, succeed. Otherwise, fail.
+4.  If sum >= DC, succeed. Otherwise, fail.
 
 ### 2.2 Advantage / Disadvantage
 
 1.  Advantage: +1d6 to the pool.
 2.  Disadvantage: -1d6 from the pool, minimum 1d6.
+
+### 2.3 Standard Difficulty Ladder (DM Reference)
+
+1.  5 Easy
+2.  8 Standard
+3.  12 Hard
+4.  16 Very Hard
+5.  20 Extreme
+
+DC values are hidden from the player.
 
 ------------------------------------------------------------------------
 
@@ -54,7 +64,7 @@ All characters use four attributes:
 2.  Max HP = 20
 3.  Current HP = 20
 4.  Gold = 10
-5.  Equipmend: 1 Healing Herbs
+5.  Equipment: 1 Healing Herbs
 
 ### 4.2 Player Choices
 
@@ -121,7 +131,7 @@ Examples:
 1.  Melee uses Strength.
 2.  Ranged uses Dexterity.
 3.  Roll attribute d6.
-4.  If result ≥ target Defense, hit.
+4.  If result >= target Defense, hit.
 
 5.  If a combatant attacks more than once on the same turn:
     1.  First attack: regular dice pool.
@@ -191,7 +201,7 @@ Stunned
 7.  Repeated surrender attempts in the same combat are harder:
     1.  First attempt: normal dice pool.
     2.  Second attempt: roll one fewer d6 (-1d6).
-    3.  Third attempt: roll two fewer d6 (-2d6).
+    3.  Third and later attempts: roll two fewer d6 (-2d6).
     4.  Minimum surrender-attempt roll is 1d6.
 
 ------------------------------------------------------------------------
@@ -226,6 +236,7 @@ A proof step is concrete evidence or a completed task that addresses a demand (f
 When a proof step is completed, the DM chooses one effect (no roll required):
 1.  Shift stance +1 toward Open.
 2.  Grant a scene-only bonus of +1d6 to the next relevant social check.
+3.  Scene-bonus structure and consumption are managed by `LLM_Rules.md`.
 
 ### 6.4 Recruiting NPC Help
 
@@ -270,6 +281,7 @@ Misc items do not use damage or initiative_penalty fields.
 Short Rest
 1. Up to 3 times per day.
 2. Heal 3 + floor(level / 2).
+3. Short Rest uses reset when a Long Rest is completed.
 
 Long Rest
 1. Safe location required.
@@ -293,6 +305,7 @@ Milestone progression is gated by the adventure.
     2.  +2 max HP and +2 current HP.
 
 ------------------------------------------------------------------------
+
 
 
 
