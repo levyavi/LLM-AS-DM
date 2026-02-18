@@ -1,7 +1,7 @@
 # LLM_Rules.md
 
 **Revision:** 1
-**Updated:** 2026-02-18 15:56:08 +02:00
+**Updated:** 2026-02-19 01:44:06 +02:00
 **Scope:** Operational rules for LLM Dungeon Master behavior
 
 ---

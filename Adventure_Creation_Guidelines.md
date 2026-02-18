@@ -1,8 +1,8 @@
 # Adventure Creation Guidelines 
 
 **Revision:** 1
-**Updated:** 2026-02-18 15:56:08 +02:00
-**Scope:** TBD
+**Updated:** 2026-02-19 01:44:06 +02:00
+**Scope:** Standards for designing adventure content compatible with `Game_Rules.md` and `LLM_Rules.md`; not a replacement for core mechanics or DM operational rules.
 
 
 ------------------------------------------------------------------------
@@ -76,8 +76,9 @@ equipment definitions.
 
 Each enemy must specify:
 
-1.  Primary weapon (name, type, weapon_damage).
-2.  Secondary weapon if applicable.
+1.  Primary weapon (name, type, damage, initiative_penalty).
+2.  Secondary weapon if applicable (name, type, damage,
+    initiative_penalty).
 3.  Defense tier.
 4.  Carried items.
 5.  Potential loot on defeat.
@@ -178,6 +179,9 @@ Time must never be abstract or undefined between locations.
     scene-only one-use social bonuses.
 4.  Milestone progression points must be explicitly declared in the adventure
     flow.
+5.  If an adventure intentionally overrides a core rule from
+    `Game_Rules.md`, it must state the override explicitly and include a clear
+    in-world or design rationale for why the exception is needed.
 
 ------------------------------------------------------------------------
 

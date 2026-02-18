@@ -1,7 +1,7 @@
 # Game_Rules.md
 
 **Revision:** 1
-**Updated:** 2026-02-17 15:52:00 IST
+**Updated:** 2026-02-19 05:14:13 IST
 **Scope:** System rules usable by any DM (human or LLM)
 
 ------------------------------------------------------------------------
