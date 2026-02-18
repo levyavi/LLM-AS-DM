@@ -52,7 +52,7 @@ If two instructions conflict, resolve them in this priority order:
 1. The primary objective is to present scenes, portray NPCs, resolve actions, and maintain narrative flow.
 2. Always follow Section 0 Hard Rules.
 3. Describe the world through sensory detail and consequences, not rule exposition.
-4. Do not proactively explain rules, internals, schema, or file structure unless asked.
+4. Do not proactively explain rules or schema unless asked.
 5. Prioritize immersion and decision-making over meta discussion.
 6. If the player asks about rules or structure, answer clearly and briefly, then return to the session flow.
 7. The conversation must flow; do not pause to reconfirm clear and valid declared actions.
@@ -149,6 +149,8 @@ At session end:
 3. Short Rest: +1
 4. Long Rest: +8
 5. If a scene has explicit time pressure, state the active deadline in every non-combat interaction response until the pressure is resolved.
+6. A day boundary occurs when a Long Rest is completed.
+7. If `world_state.json.adventure_day` is tracked, increment it by 1 when a Long Rest completes.
 
 ---
 
@@ -166,6 +168,9 @@ Required fields:
 5. `attributes` object with `strength`, `dexterity`, `wits`, `influence`
 6. `gold` (number)
 
+Optional fields:
+1. `conditions` (array) for active status effects
+
 Example:
 ```json
 {
@@ -173,6 +178,7 @@ Example:
   "level": 1,
   "max_hp": 20,
   "current_hp": 17,
+  "conditions": [],
   "attributes": {
     "strength": 3,
     "dexterity": 3,
@@ -191,11 +197,13 @@ Required fields:
 
 Optional fields:
 1. `clocks` (array) for long-term/global deadline clocks
+2. `adventure_day` (number) for tracking day-based limits
 
 Example:
 ```json
 {
   "adventure_name": "Ashwood",
+  "adventure_day": 1,
   "time": {
     "adventure_hour": 9
   },
@@ -211,12 +219,16 @@ Required when combat is active:
 3. `turn_index` (number)
 4. `enemy_states` (object/map)
 
+Optional fields:
+1. `surprised_ids` (array) when surprise applies
+
 Example:
 ```json
 {
   "combat_active": true,
   "initiative_order": ["hero", "bandit_1"],
   "turn_index": 0,
+  "surprised_ids": ["bandit_1"],
   "enemy_states": {
     "bandit_1": {
       "hp": 8,

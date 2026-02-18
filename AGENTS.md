@@ -8,7 +8,7 @@ This file defines repository-local behavior for Codex when working in this proje
 
 ## Priorities
 1. Follow direct user instructions first.
-2. Keep game logic consistent with `Rules.md`, `Game_Rules.md`, and `LLM_Rules.md`.
+2. Keep game logic consistent with `Game_Rules.md`, and `LLM_Rules.md`.
 3. Prefer minimal, targeted changes over broad refactors.
 
 ## Editing Rules

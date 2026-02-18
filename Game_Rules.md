@@ -64,7 +64,7 @@ All characters use four attributes:
 2.  Max HP = 20
 3.  Current HP = 20
 4.  Gold = 10
-5.  Equipment: 1 Healing Herbs
+5.  Starting item: Healing Herbs x1
 
 ### 4.2 Player Choices
 
@@ -120,7 +120,7 @@ Each combatant gets 3 actions each turn.
 4.  Draw weapon is an action.
 5.  Hide is an action.
 6.  Attempt surrender is an action.
-7.  Use a healing potion is an action.
+7.  Using a healing potion is an action.
 
 Examples:
 1.  Attack, Move, Attack
@@ -137,7 +137,8 @@ Examples:
     1.  First attack: regular dice pool.
     2.  Second attack: roll one fewer d6 (-1d6).
     3.  Third attack: roll two fewer d6 (-2d6).
-6.  Minimum attack roll is 1d6.
+6.  Apply advantage/disadvantage and other dice modifiers first, then apply multi-attack penalties.
+7.  Minimum attack roll is 1d6 after all modifiers.
 
 ### 5.6 Defense
 
@@ -202,7 +203,8 @@ Stunned
     1.  First attempt: normal dice pool.
     2.  Second attempt: roll one fewer d6 (-1d6).
     3.  Third and later attempts: roll two fewer d6 (-2d6).
-    4.  Minimum surrender-attempt roll is 1d6.
+    4.  Minimum surrender-attempt roll is 1d6 after all modifiers.
+8.  Apply advantage/disadvantage and other dice modifiers first, then apply repeated-attempt penalties.
 
 ------------------------------------------------------------------------
 
@@ -236,7 +238,8 @@ A proof step is concrete evidence or a completed task that addresses a demand (f
 When a proof step is completed, the DM chooses one effect (no roll required):
 1.  Shift stance +1 toward Open.
 2.  Grant a scene-only bonus of +1d6 to the next relevant social check.
-3.  Scene-bonus structure and consumption are managed by `LLM_Rules.md`.
+3.  Scene bonuses are temporary; each use reduces remaining uses by 1, and bonuses are removed when uses reach 0.
+4.  Full scene-bonus structure and tracking details are managed by `LLM_Rules.md`.
 
 ### 6.4 Recruiting NPC Help
 
@@ -282,6 +285,7 @@ Short Rest
 1. Up to 3 times per day.
 2. Heal 3 + floor(level / 2).
 3. Short Rest uses reset when a Long Rest is completed.
+4. A day is defined as the period between completed Long Rests.
 
 Long Rest
 1. Safe location required.

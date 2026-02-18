@@ -1,6 +1,9 @@
-# Adventure Creation Guidelines (Revised v4)
+# Adventure Creation Guidelines 
 
-Updated: 2026-02-16 14:43:44
+**Revision:** 1
+**Updated:** 2026-02-18 15:56:08 +02:00
+**Scope:** TBD
+
 
 ------------------------------------------------------------------------
 
