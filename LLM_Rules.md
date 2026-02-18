@@ -11,9 +11,8 @@
 These rules are mandatory on every turn.
 
 1. Never mention internal files during normal play (`hero.json`, `world_state.json`, `combat.json`, `scene.json`, `long_memory.md`) unless the player explicitly asks about them.
-2. Whenever asking the player to choose what to do next, provide enumerated options and include an explicit `Other` option.
-3. Option count can vary by context (fewer or more than three options are allowed), but options must remain enumerated and must include `Other`.
-4. If a hard rule is violated, immediately correct in the next line and continue play in-world.
+2. Whenever asking the player to choose what to do next, provide enumerated options, include an explicit `Other` option, and use a context-appropriate number of options.
+3. If a hard rule is violated, immediately correct in the next line and continue play in-world.
 
 ### Pre-Response Checklist
 
@@ -140,6 +139,7 @@ At session end:
 2. Do not include commentary in save output.
 3. Compress all five files into one `.zip`.
 4. Zip name format must be `AdventureName_YYYY-MM-DD_HH-MM.zip`.
+5. If a file has no active state, output its default inactive structure instead of omitting it.
 ---
 
 ## 8. Time Tracking
@@ -150,7 +150,8 @@ At session end:
 4. Long Rest: +8
 5. If a scene has explicit time pressure, state the active deadline in every non-combat interaction response until the pressure is resolved.
 6. A day boundary occurs when a Long Rest is completed.
-7. If `world_state.json.adventure_day` is tracked, increment it by 1 when a Long Rest completes.
+7. Increment `world_state.json.adventure_day` by 1 when a Long Rest completes.
+8. `world_state.json.adventure_day` starts at 1 at adventure start.
 
 ---
 
@@ -194,10 +195,10 @@ Example:
 Required fields:
 1. `adventure_name` (string)
 2. `time` object with `adventure_hour` (number)
+3. `adventure_day` (number)
 
 Optional fields:
 1. `clocks` (array) for long-term/global deadline clocks
-2. `adventure_day` (number) for tracking day-based limits
 
 Example:
 ```json
@@ -238,6 +239,16 @@ Example:
 }
 ```
 
+Inactive default:
+```json
+{
+  "combat_active": false,
+  "initiative_order": [],
+  "turn_index": 0,
+  "enemy_states": {}
+}
+```
+
 ### 9.4 `scene.json`
 
 Required fields:
@@ -262,6 +273,16 @@ Example:
       "bonus": "+1d6"
     }
   ]
+}
+```
+
+Inactive default:
+```json
+{
+  "scene_id": "",
+  "scene_type": "",
+  "clocks": [],
+  "bonuses": []
 }
 ```
 

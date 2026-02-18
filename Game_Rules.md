@@ -239,7 +239,7 @@ When a proof step is completed, the DM chooses one effect (no roll required):
 1.  Shift stance +1 toward Open.
 2.  Grant a scene-only bonus of +1d6 to the next relevant social check.
 3.  Scene bonuses are temporary; each use reduces remaining uses by 1, and bonuses are removed when uses reach 0.
-4.  Full scene-bonus structure and tracking details are managed by `LLM_Rules.md`.
+4.  All scene-only bonuses are cleared when the scene ends.
 
 ### 6.4 Recruiting NPC Help
 
