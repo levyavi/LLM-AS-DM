@@ -108,21 +108,29 @@ DC values are hidden from the player.
    2. Decrement `uses` by 1 when consumed.
    3. Remove the bonus entry when `uses` reaches 0.
    4. Clear all remaining scene-only bonuses when the scene ends.
+   5. Proof-step bonuses from `Game_Rules.md` Section 6.3 must be stored with `uses: 1`.
 9. For every combat or social encounter, store an entry in `long_memory.md` with:
    1. A short encounter description
    2. The encounter outcome
    3. The in-game time when the encounter happened
-10. When a scene ends, update `long_memory.md` with a short summary of what happened in that scene.
-11. After damage is resolved, write HP changes immediately:
-   1. Hero HP to `hero.json.current_hp`
-   2. Enemy HP to `combat.json.enemy_states.<id>.hp`
-   3. If HP is 0 or below, mark that combatant as defeated in `combat.json`.
-12. When combat starts, initialize `combat.json` with at least:
-   1. `combat_active: true`
-   2. `initiative_order`
-   3. `turn_index`
-   4. `enemy_states`
-13. For surprise in combat, track affected combatants in `combat.json.surprised_ids` and remove each id after that combatant's first turn ends.
+10. When a scene ends, append one scene recap entry to `long_memory.md` using this format:
+    1. `Scene Recap: <scene_id or short label>`
+    2. `Time: <in-game time or range>`
+    3. `Summary: <2-4 sentences about scene-level changes>`
+    4. `Narrative Changes: <bullet list of key outcomes>`
+11. Scene recap entries must not duplicate per-encounter entries already logged under rule 9.
+12. After damage is resolved, write HP changes immediately:
+    1. Hero HP to `hero.json.current_hp`
+    2. Enemy HP to `combat.json.enemy_states.<id>.hp`
+    3. If HP is 0 or below, mark that combatant as defeated in `combat.json`.
+13. When combat starts, initialize `combat.json` with at least:
+    1. `combat_active: true`
+    2. `initiative_order`
+    3. `turn_index`
+    4. `enemy_states`
+14. For surprise in combat, track affected combatants in `combat.json.surprised_ids` and remove each id after that combatant's first turn ends.
+15. Surprise effect follows `Game_Rules.md` Section 5.3: a surprised combatant loses all 3 actions on their first turn only.
+16. Initiative totals can be below 0; do not clamp or normalize negative initiative values when resolving order or storing turn state.
 
 ---
 
@@ -253,7 +261,7 @@ Inactive default:
 
 Required fields:
 1. `scene_id` (string)
-2. `scene_type` (`combat` or `social`)
+2. `scene_type` (`combat` or `social`) when a scene is active
 3. `bonuses` (array of structured bonus entries)
 
 Optional fields:
@@ -285,6 +293,7 @@ Inactive default:
   "bonuses": []
 }
 ```
+In this inactive default, empty `scene_type` indicates that no scene is currently active.
 
 ### 9.5 `long_memory.md`
 
@@ -300,6 +309,17 @@ Example:
 - Type: Social
 - Summary: Hero negotiated with the gate captain for passage.
 - Outcome: Captain moved from Wary to Neutral and allowed entry.
+```
+
+Scene recap example (Section 6 rule 10 format):
+```md
+### Scene Recap: ashwood_gate_01
+- Time: Adventure Hour 8-9
+- Summary: The hero gathered proof, negotiated with the gate captain, and secured lawful entry. Tension remained but open conflict was avoided.
+- Narrative Changes:
+  - Captain stance shifted from Wary to Neutral.
+  - Gate access granted for the current day.
+  - Scene-only social bonus consumed and removed.
 ```
 
 ---
