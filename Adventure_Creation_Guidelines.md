@@ -22,7 +22,7 @@
 2.  Bosses must have ideology, not just hostility.
 3.  Social checks should meaningfully redirect the adventure.
 4.  Temporary alliances must be mechanically supportable in
-    World_state.json.
+    `world_state.json`.
 
 ------------------------------------------------------------------------
 
@@ -55,7 +55,7 @@
 # 6. Multiple Resolution Paths Required
 
 1.  Boss must support at least three resolution paths.
-2.  World_state flags must support faction realignment.
+2.  `world_state.json` flags must support faction realignment.
 3.  Secondary antagonist threads should exist.
 
 ------------------------------------------------------------------------
@@ -84,7 +84,7 @@ Each enemy must specify:
 
 Loot must be:
 
-1.  Concrete and transferable to Hero.json inventory.
+1.  Concrete and transferable to `hero.json` inventory.
 2.  Mechanically defined if weapon or armor.
 3.  Economically coherent with setting.
 4.  Non-duplicative unless justified.
@@ -117,7 +117,7 @@ Travel time must:
 1.  Be consistent across sessions.
 2.  Integrate with time pressure mechanics.
 3.  Affect rest opportunities.
-4.  Be trackable in World_state.json when relevant.
+4.  Be trackable in `world_state.json` when relevant.
 
 Time must never be abstract or undefined between locations.
 
@@ -127,7 +127,11 @@ Time must never be abstract or undefined between locations.
 
 1.  Define clean save breakpoints.
 2.  Avoid ambiguous mid-resolution states.
-3.  Ensure World_state contains sufficient flags for resumption.
+3.  Ensure `world_state.json` contains sufficient flags for resumption.
+4.  Adventures must be resumable from the standard save bundle containing:
+    `hero.json`, `world_state.json`, `combat.json`, `scene.json`, and
+    `long_memory.md`.
+5.  Avoid requiring hidden off-file context to continue play after load.
 
 ------------------------------------------------------------------------
 
@@ -151,13 +155,33 @@ Time must never be abstract or undefined between locations.
 # 13. Explicit Time Tracking
 
 1.  Define countdown elements.
-2.  Track days or hours in World_state.json.
+2.  Track days or hours in `world_state.json`.
 3.  Time pressure must influence options.
 4.  Travel time must integrate with countdown systems.
+5.  Scene-bound deadlines should be represented as clocks in `scene.json`.
+6.  Long-term/global deadlines should be represented as clocks in
+    `world_state.json`.
+7.  Adventures should provide clear triggers for clock advancement and
+    consequences when clocks complete.
 
 ------------------------------------------------------------------------
 
-# 14. Moral Ambiguity
+# 14. System Alignment Requirements
+
+1.  Combat design must assume 3 actions per turn and allow meaningful
+    action tradeoffs (attack, move, hide, weapon handling, surrender, potion
+    use).
+2.  Rest pacing must account for system limits:
+    1.  Short Rest can be used up to 3 times per day.
+    2.  A day boundary occurs on completed Long Rest.
+3.  Social design should include proof-step opportunities that can grant
+    scene-only one-use social bonuses.
+4.  Milestone progression points must be explicitly declared in the adventure
+    flow.
+
+------------------------------------------------------------------------
+
+# 15. Moral Ambiguity
 
 1.  Boss must have coherent rationale.
 2.  Player alignment shift must be viable.
@@ -166,7 +190,7 @@ Time must never be abstract or undefined between locations.
 
 ------------------------------------------------------------------------
 
-# 15. Escalation Across Sessions
+# 16. Escalation Across Sessions
 
 1.  Include unresolved thread.
 2.  Include political ripple effect.
@@ -190,3 +214,4 @@ Adventures must:
 9.  Define equipment and loot for all enemies.
 10. Define explicit travel duration between locations.
 11. Remain JSON-compatible and persistence-safe.
+12. Stay aligned with current `Game_Rules.md` and `LLM_Rules.md`.
