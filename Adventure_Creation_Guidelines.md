@@ -220,3 +220,27 @@ Adventures must:
 10. Define explicit travel duration between locations.
 11. Remain JSON-compatible and persistence-safe.
 12. Stay aligned with current `Game_Rules.md` and `LLM_Rules.md`.
+
+------------------------------------------------------------------------
+
+# 17. Adventure Hook Requirement
+
+1.  Every adventure must include an explicit opening hook.
+2.  The hook must give the hero a concrete reason to act now.
+3.  The hook should establish stakes (personal, local, political, or
+    economic) and point to an immediate first scene.
+4.  The hook should support at least one social lead and one combat lead so
+    different play styles can engage early.
+
+------------------------------------------------------------------------
+
+# 18. Spoiler-Safe Authoring
+
+1.  Hidden paths, secrets, and unrevealed NPC knowledge must be marked as
+    discovery-gated content.
+2.  Player-facing prompts in the adventure text should describe observable
+    actions, not hidden conclusions.
+3.  Avoid phrasing that leaks outcomes before discovery (for example:
+    "ask about the secret route").
+4.  Prefer discovery-first phrasing (for example:
+    "ask about safer ways through the forest").
