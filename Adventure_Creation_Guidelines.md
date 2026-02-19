@@ -77,8 +77,7 @@ equipment definitions.
 Each enemy must specify:
 
 1.  Primary weapon (name, type, damage, initiative_penalty).
-2.  Secondary weapon if applicable (name, type, damage,
-    initiative_penalty).
+2.  Secondary weapon if applicable (name, type, damage, initiative_penalty).
 3.  Defense tier.
 4.  Carried items.
 5.  Potential loot on defeat.
@@ -133,6 +132,8 @@ Time must never be abstract or undefined between locations.
     `hero.json`, `world_state.json`, `combat.json`, `scene.json`, and
     `long_memory.md`.
 5.  Avoid requiring hidden off-file context to continue play after load.
+6.  If a tracked file has no active state, include its default inactive
+    structure in save output instead of omitting the file.
 
 ------------------------------------------------------------------------
 
